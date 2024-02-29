@@ -45,10 +45,7 @@ class SpaceJam(ShowBase):
         spaceJamClass.Drone(self.loader, "./Assets/Drones/DroneDefender/DroneDefender.obj", self.render, droneName, "./Assets/Drones/DroneDefender/octotoad1_auv.png", position, 5)
     
      
-    def setCamera(self):
-        self.disableMouse()
-        self.camera.reparentTo(self.Ship1.modelNode)
-        self.camera.setFluidPos(0, 1, 0)
+   
         
 
     def SetupScene(self):
@@ -104,6 +101,7 @@ class SpaceJam(ShowBase):
         self.Ship1.setPos(100, 3280, 100)
         self.Ship1.setScale(15)
         self.Ship1.setTexture(tex, 1)
+        self.task_mgr, self.render
 
         self.Station1 = self.loader.loadModel("./Assets/Space Station/SpaceStation1B/spaceStation.x.obj")
         self.Station1.reparentTo(self.render)
@@ -115,7 +113,6 @@ class SpaceJam(ShowBase):
         self.Universe.setTexture(self.tex, 1)
         
         fullCycle = 60
-        self.SetCamera()
         for j in range(fullCycle):
             spaceJamClass.Drone.droneCount += 1
             nickName = "Drone" + str(spaceJamClass.Drone.droneCount)
@@ -124,6 +121,17 @@ class SpaceJam(ShowBase):
             self.DrawCircleXZ(self.Planet3, nickName)
             self.DrawCircleXY(self.Planet4, nickName)
             self.DrawCircleYZ(self.Planet5, nickName)
+            self.SetCamera()
+
+    def setCamera(self):
+        self.disableMouse()
+        self.camera.reparentTo(self.Ship1.modelNode)
+        self.camera.setFluidPos(0, 1, 0)
+
+
+
+
+
 
 
 
