@@ -53,7 +53,7 @@ class SpaceJam(ShowBase):
         
 
     def SetupScene(self):
-        self.Universe = self.loader.loadModel("./Assets/Universe/Universe.x")
+        self.Universe = self.loader.loadModel("./Assets/Universe/Universe.obj")
         self.Universe.reparentTo(self.render)
         self.Universe.setScale(15000)
 
@@ -105,9 +105,9 @@ class SpaceJam(ShowBase):
         self.Ship1.setPos(100, 3280, 100)
         self.Ship1.setScale(15)
         self.Ship1.setTexture(tex, 1)
-        (self.task_mgr, self.render)
+        (self.task_mgr, self.render, self.accept)
 
-        self.Station1 = self.loader.loadModel("./Assets/Space Station/SpaceStation1B/spaceStation.x.obj")
+        self.Station1 = self.loader.loadModel("./Assets/SpaceSation1B/spaceStation.egg")
         self.Station1.reparentTo(self.render)
         self.Station1.setPos(110, 3300, 120)
         self.Station1.setScale(25)
@@ -117,6 +117,8 @@ class SpaceJam(ShowBase):
         self.Universe.setTexture(self.tex, 1)
         
         fullCycle = 60
+        self.setCamera()
+
         for j in range(fullCycle):
             spaceJamClass.Drone.droneCount += 1
             nickName = "Drone" + str(spaceJamClass.Drone.droneCount)
@@ -125,7 +127,7 @@ class SpaceJam(ShowBase):
             self.DrawCircleXZ(self.Planet3, nickName)
             self.DrawCircleXY(self.Planet4, nickName)
             self.DrawCircleYZ(self.Planet5, nickName)
-            self.SetCamera()
+            
 
  
 
